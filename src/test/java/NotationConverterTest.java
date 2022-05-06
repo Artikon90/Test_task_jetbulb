@@ -1,10 +1,18 @@
 import exceptions.InvalidValueException;
 import logics.NotationConverter;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class NotationConverterTest {
-    NotationConverter testConverter = new NotationConverter();
+
+    private static NotationConverter testConverter;
+
+    @BeforeClass
+    public static void createNewConverter() {
+        testConverter = new NotationConverter();
+    }
+
     @Test
     public void resShouldBe10() {
         Assert.assertEquals(10, testConverter.toArabic("X"));
