@@ -1,4 +1,5 @@
 package logics;
+
 import exceptions.InvalidValueException;
 import java.util.HashMap;
 
@@ -20,7 +21,9 @@ public class NotationConverter {
         int result = 0;
         char[] charArray = romanNotation.toCharArray();
         for(char i : charArray) {
-            checkValid(i);
+            if(!romanNumber.containsKey(i)) {
+                throw new InvalidValueException();
+            }
         }
         for (int i = 0; i < charArray.length; i++) {
             if(i + 1 < charArray.length && romanNumber.get(charArray[i]) < romanNumber.get(charArray[i + 1])) {
@@ -31,10 +34,5 @@ public class NotationConverter {
             }
         }
         return result;
-    }
-    void checkValid(char charCheck) {
-        if(!romanNumber.containsKey(charCheck)) {
-            throw new InvalidValueException();
-        }
     }
 }
