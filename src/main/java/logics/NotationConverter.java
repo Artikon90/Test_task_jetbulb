@@ -2,7 +2,6 @@ package logics;
 
 import exceptions.InvalidValueException;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class NotationConverter {
     static final HashMap<Character, Integer> romanNumber = new HashMap<>();
@@ -21,7 +20,7 @@ public class NotationConverter {
         char[] charArray = romanNotation.toCharArray();
         if (romanNotation.isBlank()) {
             throw new InvalidValueException();
-        } else if(charArray.length >= 1) {
+        } else {
             for (char i : charArray) {
                 if(!romanNumber.containsKey(i)) {
                     throw new InvalidValueException();
