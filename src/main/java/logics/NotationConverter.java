@@ -2,6 +2,7 @@ package logics;
 
 import exceptions.InvalidValueException;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class NotationConverter {
     static final HashMap<Character, Integer> romanNumber = new HashMap<>();
@@ -15,16 +16,19 @@ public class NotationConverter {
         romanNumber.put('M', 1000);
     }
     public int toArabic(String romanNotation) throws InvalidValueException {
-        if(romanNotation.isEmpty()) {
-            throw new InvalidValueException();
-        }
-        int result = 0;
+        //раскомментируй следующую строку, если требуется валидация без учета регистра
+        //romanNotation = romanNotation.toUpperCase();
         char[] charArray = romanNotation.toCharArray();
-        for(char i : charArray) {
-            if(!romanNumber.containsKey(i)) {
-                throw new InvalidValueException();
+        if (romanNotation.isBlank()) {
+            throw new InvalidValueException();
+        } else if(charArray.length >= 1) {
+            for (char i : charArray) {
+                if(!romanNumber.containsKey(i)) {
+                    throw new InvalidValueException();
+                }
             }
         }
+        int result = 0;
         for (int i = 0; i < charArray.length; i++) {
             if(i + 1 < charArray.length && romanNumber.get(charArray[i]) < romanNumber.get(charArray[i + 1])) {
                 result += romanNumber.get(charArray[i + 1]) - romanNumber.get(charArray[i]);
