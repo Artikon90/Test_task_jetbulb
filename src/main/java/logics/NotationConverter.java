@@ -4,8 +4,8 @@ import exceptions.InvalidValueException;
 import java.util.HashMap;
 
 public class NotationConverter {
-    static final HashMap<Character, Integer> romanNumber = new HashMap<>();
-    static {
+    public int toArabic(String romanNotation) throws InvalidValueException {
+        HashMap<Character, Integer> romanNumber = new HashMap<>();
         romanNumber.put('I', 1);
         romanNumber.put('V', 5);
         romanNumber.put('X', 10);
@@ -13,8 +13,6 @@ public class NotationConverter {
         romanNumber.put('C', 100);
         romanNumber.put('D', 500);
         romanNumber.put('M', 1000);
-    }
-    public int toArabic(String romanNotation) throws InvalidValueException {
         //раскомментируй следующую строку, если требуется валидация без учета регистра
         //romanNotation = romanNotation.toUpperCase();
         char[] charArray = romanNotation.toCharArray();
