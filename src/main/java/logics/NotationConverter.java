@@ -5,6 +5,9 @@ import java.util.HashMap;
 
 public class NotationConverter {
     public int toArabic(String romanNotation) throws InvalidValueException {
+        if(romanNotation == null) {
+            throw new InvalidValueException();
+        }
         HashMap<Character, Integer> romanNumber = new HashMap<>();
         romanNumber.put('I', 1);
         romanNumber.put('V', 5);

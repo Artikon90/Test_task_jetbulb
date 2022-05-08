@@ -54,7 +54,10 @@ public class NotationConverterTest {
         Assert.assertEquals(3987, testConverter.toArabic("MMMCMLXXXVII"));
     }
 
-
+    @Test(expected = InvalidValueException.class)
+    public void nullInputShouldThrowException() {
+        testConverter.toArabic(null);
+    }
     @Test(expected = InvalidValueException.class)
     public void russianLayoutShouldThrowException() {
         testConverter.toArabic("ХС");
